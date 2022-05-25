@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  spc-admin-api:
+    image: spc-admin-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "spc-admin-api"
+    volumes:
+      - tmp:/tmp
+      - logs:/logs
+    ports:
+      - "8180:8080"
+    environment:
+      RUN_ENV: test
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+volumes:
+  logs:
+  tmp:
